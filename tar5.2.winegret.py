@@ -29,6 +29,6 @@ except:
 
 current_time = time.localtime(d3)
 final_time = time.strftime("%Y-%m-%d", current_time)
-print("The random date:",final_time)
+print("The random date:", final_time)
 if current_time.tm_wday == 0: # Monday in Python is represented by the number 0
-    print("I have no vinaigrette")
+    print("I have no vinaigrette\n")
