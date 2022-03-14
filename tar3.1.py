@@ -16,7 +16,7 @@ if len(listt) == 2:
 else:
     flag = False
 if flag:
-    print("The folder contain two file")
+    print("The folder contain two file\n")
 else:
 
 
