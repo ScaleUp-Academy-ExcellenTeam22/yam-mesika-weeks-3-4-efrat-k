@@ -19,5 +19,5 @@ if flag:
     print("The folder contain two file")
 else:
 
-    print("The folder not contain two file")
+    print("The folder not contain two file\n")
 
