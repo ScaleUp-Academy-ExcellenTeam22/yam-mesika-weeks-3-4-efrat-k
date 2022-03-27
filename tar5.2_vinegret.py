@@ -2,33 +2,42 @@ from datetime import date, datetime
 import time
 import random
 
-date1 = input("Enter the first date: ")
-date2 = input("Enter the second date: ")
+"""
+    @:param Date in Y-M-D format
+    @:return Date in D-M-Y format
+"""
+def return_in_format(date1_from_user):
+    try:
+        datee = date1_from_user.split("-")
+        date_in_format = date(int(datee[0]), int(datee[1]), int(datee[2]))
+    except:
+        print("Wrong dates")
+        exit()
+    return date_in_format
 
-date1 = date1.split("-")
-date2 = date2.split("-")
 
-try:
-    d1 = date(int(date1[0]), int(date1[1]), int(date1[2]))
-except:
-    print("Wrong dates")
-    exit()
-print(d1)
-try:
-    d2 = date(int(date2[0]), int(date2[1]), int(date2[2]))
-except:
-    print("Wrong dates")
-    exit()
-print(d2)
+"""
+    @:param Two dates
+    @:return A  random date between these two dates
+"""
 
-try:
-    d3 = random.randrange(time.mktime(d1.timetuple()) ,time.mktime(d2.timetuple()))
-except:
-    print("Wrong dates")
-    exit()
+def random_and_print(date1,date2):
+    try:
+        date3_in_format_between = random.randrange(time.mktime(date1.timetuple()) ,time.mktime(date2.timetuple()))
+    except:
+        print("Wrong dates")
+        exit()
+    current_time = time.localtime(date3_in_format_between)
+    final_time = time.strftime("%Y-%m-%d", current_time)
+    print("The random date:",final_time)
+    return current_time
 
-current_time = time.localtime(d3)
-final_time = time.strftime("%Y-%m-%d", current_time)
-print("The random date:",final_time)
-if current_time.tm_wday == 0: # Monday in Python is represented by the number 0
-    print("I have no vinaigrette")
+if __name__ =="__main__":
+    date1_from_user = input("Enter the first date: ")
+    date2_from_user  = input("Enter the second date: ")
+
+    date1_in_format= return_in_format(date1_from_user)
+    date2_in_format= return_in_format(date2_from_user)
+    current_time=random_and_print(date1_in_format,date2_in_format)
+    if current_time.tm_wday == 0:  # Monday in Python is represented by the number 0
+        print("I have no vinaigrette")
